@@ -1,0 +1,28 @@
+create database database_2;
+use database_2;
+create table if not exists employee_3(
+    id int,
+    name VARCHAR(50),
+    address VARCHAR(50),
+    city VARCHAR(50)
+);
+insert into employee_3 values(1,"kul","Chemnitz","Dresden");
+select * from employee_3;
+# add new column name DOB in the table 
+alter table employee_3 add DOB date;
+
+# Change or modify existing column ina table or change datatype of name column or increase length of name column 
+alter table employee_3 modify column name varchar(200);
+
+# delete existing column from a given TABLE or remove city column from employee TABLE
+alter table employee_3 drop column city;
+select * from employee_3;
+# change the column or rename the column name to full name
+alter table employee_3 rename column name to full_name;
+
+# add unique integrity constraints on id column 
+alter table employee_3 add constraint id_unique UNIQUE(id);
+
+insert into employee_3 values(1,"kul", "bruhl",'2022-02-09');
+# drop constraint from existing table 
+alter table employee_3 drop constraint id_unique;
