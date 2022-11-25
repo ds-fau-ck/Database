@@ -53,3 +53,6 @@ create table suplier_data(
     sup_country varchar(50)
 );
 insert into suplier_data values(301,'USA'),(200,'Germany');
+
+#write a query to find all customer order data where customer and supplier both are living in same country
+select * from customer_order_data where cust_country in (select distinct sup_country from suplier_data);
