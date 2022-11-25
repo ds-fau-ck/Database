@@ -56,3 +56,29 @@ insert into suplier_data values(301,'USA'),(200,'Germany');
 
 #write a query to find all customer order data where customer and supplier both are living in same country
 select * from customer_order_data where cust_country in (select distinct sup_country from suplier_data);
+create database test_db;
+use test_db;
+create table students_marks(
+    stu_id int,
+    stu_name varchar(50),
+    total_marks int
+);
+insert into students_marks values(1, 'Shusank', 50);
+insert into students_marks values(2,'Rahul',91);
+insert into students_marks values(3, 'kul', 74);
+insert into students_marks values(4,'chakma',65);
+insert into students_marks values(5, 'lutz', 86);
+insert into students_marks values(6,'weber',77);
+#select * from students_marks
+# Write a query to calculate the grades for a students by following criteria
+select stu_id,
+       stu_name,
+       total_marks,
+       case
+             when total_marks >=90 then 'A+'
+             when total_marks >=85 and total_marks < 90 then 'A'
+             when total_marks >=75 and total_marks < 85 then 'B+'
+             when total_marks >=60 and total_marks < 75 then 'B'
+             else 'C'
+        end as grade
+from students_marks;
