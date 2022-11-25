@@ -1,0 +1,22 @@
+create database test;
+use test;
+create table order_data(
+    cust_id int,
+    order_id int,
+    country varchar(50),
+    state varchar(50)
+);
+insert into order_data values(1,100,'USA', 'Seatol');
+insert into order_data values(2,101,'Germany','Saxony');
+insert into order_data values(2,102,'Germany','Bavaria');
+insert into order_data values(4,104,'UK','London');
+insert into order_data values(5,105,'USA','WDC');
+insert into order_data values(4,106,'UK','WALSE');
+insert into order_data values(6,107,'India','West Bengle');
+select * from order_data;
+#use a having clause
+# write a query to find the country where only 1 order was plced
+select country from order_data group by country having count(*)=1;
+# where clause and group by clause-> what shoulb be the proper sequence?
+#answer->where clause and then group by
+
