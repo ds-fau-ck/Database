@@ -24,3 +24,32 @@ select country GROUP_CONCAT(state) as states_in_country from order_data group by
 select country GROUP_CONCAT(distinct state) as states_in_country from order_data group by country;
 select country, GROUP_CONCAT(distinct state order by state desc) as state_in_country from order_data group by country;
 select country, GROUP_CONCAT(distince state order by state desc separator '<->') as state_in_country from order_data group_by country;
+#Subquery in sql  
+create table Employees(
+    emp_id int,
+
+    emp_name varchar(50),
+    emp_salary
+);
+insert into employees values(1,'kul',5000),(2,'chakma',7000),(3,'luts',6000),(4,'Weber',4000),(5,'Alfred',8000);
+#write a query to print all those employees records who are getting more salray than 'kul'
+#wrong query select * from employees where salary>6000;
+
+select * from employees where emp_salary >(select emp_salary from emlpoyees where name='Kul');
+# Use of IN and NOT IN
+# write a query to print all order which were placed in Seatle and Saxony
+select * from order_data where state in ('Seatol','Saxony');
+create table customer_order_data(
+    order_id int,
+    cust_id int,
+    supplier_id int,
+    cust_country varchar(50)
+);
+insert into customer_order_data values(101,200,200,'Germany');
+insert into customer_order_data values(102,201,301,'USA');
+insert into customer_order_data values(103,203,303,"INDIA");
+create table suplier_data(
+    suplier_id int,
+    sup_country varchar(50)
+);
+insert into suplier_data values(301,'USA'),(200,'Germany');
