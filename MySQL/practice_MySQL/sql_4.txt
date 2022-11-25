@@ -82,3 +82,18 @@ select stu_id,
              else 'C'
         end as grade
 from students_marks;
+
+#Uber SQL interview question
+create table Tree(
+    node int,
+    parents int
+);
+insert into Tree values(5,8),(9,8),(4,5),(2,9),(1,5),(3,9),(8,null);
+select * from Tree;
+select node,
+       CASE
+            when node not in (select distinct parents from tree where parents is not null) then 'LEAF'
+            when parents is null then 'ROOT'
+            else 'INNER'
+        end as node_type
+from tree;
