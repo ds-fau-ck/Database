@@ -97,3 +97,43 @@ select node,
             else 'INNER'
         end as node_type
 from tree;
+## join in the database
+create database test_db;
+use test_db;
+create table orders(
+    order_id int,
+    cust_id int,
+    order_date date,
+    shipment_id int
+);
+create table customer(
+    cust_id int,
+    cust_name varchar(50),
+    country varchar(50)
+);
+insert into orders values(10308,2,'2022-09-15',3);
+insert into orders values(10309,30,'2022-09-16',1);
+insert into orders values(10310,41,'2022-09-19',2);
+select * from orders;
+insert into customer values(1, 'Neel','Germany');
+insert into customer values(2,'Nittin','UK');
+insert into customer values(3,'kul','USA');
+select * from customer;
+#perform inner join 
+# get the customer information for each order if value of customer is present in order table
+select
+o.*,c.*
+from orders o  
+inner join customer c on o.cust_id=c.cust_id;
+# Left join
+select  
+o.*,c.*
+from orders o 
+left join customer c on o.cust_id=c.cust_id;
+# Right join    
+select 
+o.*,c.*
+from orders o 
+right join customer c on o.cust_id=c.cust_id;
+
+#Cross join
