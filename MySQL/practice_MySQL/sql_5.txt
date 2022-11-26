@@ -1,0 +1,17 @@
+create database test_db;
+use test_db;
+#Window FUNCTION
+create table shop_sales_data(
+    sales_data date,
+    shop_id varchar(50),
+    sales_amount int
+);
+insert into shop_sales_data values('2022-02-14','S1',200);
+insert into shop_sales_data values('2022-02-15','S1',300);
+insert into shop_sales_data values('2022-02-14','S2',600);
+insert into shop_sales_data values('2022-02-15','S3',500);
+insert into shop_sales_data values('2022-02-18','S1',400);
+insert into shop_sales_data values('2022-02-17','S1',250);
+insert into shop_sales_data values('2022-02-20','S3',300);
+
+select * from shop_sales_data;
