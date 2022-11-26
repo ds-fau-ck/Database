@@ -137,3 +137,19 @@ from orders o
 right join customer c on o.cust_id=c.cust_id;
 
 #Cross join
+create table employees_full_data(
+    emp_id int, 
+    emp_name varchar(50), 
+    mgr_id int
+);
+insert into employees_full_data values(1,'kul', 3);
+insert into employees_full_data values(2,'chakma', 3);
+insert into employees_full_data values(3,'ludwig', 4);
+insert into employees_full_data values(4,'Weber', 3);
+insert into employees_full_data values(5,'Alfred', null);
+update employees_full_data set emp_id=6 where emp_name='Weber';
+update employees_full_data set emp_id=4 where emp_name='ludwig';
+update employees_full_data set mgr_id=6 where emp_id=4;
+update employees_full_data set mgr_id=4 where emp_id=2;
+
+select * from employees_full_data;
