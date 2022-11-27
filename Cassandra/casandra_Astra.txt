@@ -1,0 +1,28 @@
+{
+  "clientID": "ypMDOpcZrzDABhwrnhmmQpIs"
+  "clientSecret": "Sqj-Besv,AcwChs-BY-TTASAUQdRPkQtx-R,28xALLDJSOPbJx5FYDCKu23YLU1cH6ojGX58MzifHFegLicS5InLDwMm2ZG_iqyh.opCGRa6GyH+NK-50_j1AzBu9FsX"
+  "token": "AstraCS:ypMDOpcZrzDABhwrnhmmQpIs:07fff42a99670401d168b578852ddbcb0d3925ef2e5bad43d4b16708388cb06f"
+}
+https://datastax-cluster-config-prod.s3.us-east-2.amazonaws.com/1b0ffff6-d24f-4ff3-9d49-88eed6c1110f-1/secure-connect-casandra-demo.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2AIQRQ76S2JCB77W%2F20221127%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20221127T051012Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=6decb69c9195b431fbfb33401343701ff869e2cb2eea2b0868e02d2482bcf4f8
+#Step 1
+pip install cassandra-driver
+#Step 2
+import cassandra
+print (cassandra.__version__)
+#Step 3
+from cassandra.cluster import Cluster
+from cassandra.auth import PlainTextAuthProvider
+
+cloud_config= {
+         'secure_connect_bundle': '/home/jovyan/secure-connect-casandra-demo.zip'
+}
+auth_provider = PlainTextAuthProvider('ypMDOpcZrzDABhwrnhmmQpIs', 'Sqj-Besv,AcwChs-BY-TTASAUQdRPkQtx-R,28xALLDJSOPbJx5FYDCKu23YLU1cH6ojGX58MzifHFegLicS5InLDwMm2ZG_iqyh.opCGRa6GyH+NK-50_j1AzBu9FsX')
+cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
+session = cluster.connect()
+
+result = session.execute("select release_version from system.local").one()
+row=result.one()
+if row:
+      print(row[0])
+else:
+      print("An error occurred.")
