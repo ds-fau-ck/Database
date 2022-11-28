@@ -1,0 +1,45 @@
+create database BigdataBootcamp;
+#Get the existing DATABASE
+show databases;
+#drop a DATABASE
+#drop database BigdataBootcamp;
+# Go inside the particular database 
+use BigdataBootcamp;
+#Command to create a TABLE
+create table if not exists employee(
+    id int,
+    name varchar(50)
+);
+# Command to list down all the TABLE
+show tables;
+show create table employee;
+# command to delete TABLE
+drop table employee;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    salary DOUBLE,
+    hiring_date DATE
+);
+#insert data into a TABLE
+insert into employee values(
+    1,
+    'kul',
+    1000,
+    '2022-09-15'
+);
+insert into employee(salary, name,id) values(2000,'Chakma',2);
+select * from employee;
+#inser multiple rows using single insert statements
+insert into employee values(3,'Amit',3000,'2021-09-15'),(4,'Niting',3500, '2021-09-16'),(5,'Kajol',4000,'2021-09-20');
+#Use select command to query the data
+select * from employee;
+#example for integrity constraint
+create table if not exists employee_with_constraints(
+    id int not null,
+    name varchar(59) not null,
+    salary double,
+    hiring_data date default '2021-01-01',
+    unique(id),
+    check(salary>1000)
+);
