@@ -54,3 +54,21 @@ create table if not exists employee_with_constraint_tmp(
 );
 insert into employee_with_constraint_tmp values(1, 'kul', 1500, '2022-01-03');
 select *from employee_with_constraint_tmp;
+create database class2_db;
+use class2_db;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    address varchar(50),
+    city varchar(50)
+);
+insert into employee values(1,'kul','Brühl','Chemnitz');
+#add new column as data of birth
+alter table employee add DOB date;
+select * from employee;
+#change or modify exiting column in a TABLE
+alter table employee modify column name varchar(100);
+alter table employee drop city;
+select *from employee;
+#change the column name
+alter table employee rename column name to full_name;
