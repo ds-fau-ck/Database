@@ -43,3 +43,14 @@ create table if not exists employee_with_constraints(
     unique(id),
     check(salary>1000)
 );
+
+create table if not exists employee_with_constraint_tmp(
+    id int not null,
+    name varchar(50) not null,
+    salary double,
+    hiring_data date default '2021-01-01',
+    constraint unique_id unique(id),
+    constraint salary_check check(salary>1000)
+);
+insert into employee_with_constraint_tmp values(1, 'kul', 1500, '2022-01-03');
+select *from employee_with_constraint_tmp;
