@@ -75,3 +75,5 @@ alter table employee rename column name to full_name;
 # Add unique integrity constraint on id COLUMN
 alter table employee add constraint id_unique unique(id);
 insert into employee values(1,'Shashank','RJPM','2021-08-01');
+#drop constraint
+alter table employee drop constraint id_unique;
