@@ -155,3 +155,9 @@ select id,
        salary as old_salary,
        (salary+salary*0.2) as new_salary
 from employee;
+
+--Syntax for update command
+update employee set age=20;
+select *from employee;
+--update the salary of employee after giving 20% increment
+update employee set salary=salary+salary*0.2;
