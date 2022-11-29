@@ -115,3 +115,43 @@ create table orders(
 select * from person;
 truncate person;
 drop table person;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    age int,
+    hiring_date date,
+    salary int,
+    city varchar(50)
+);
+insert into employee values(1, 'kul', 37, '2021-01-03',1000, 'Chemnitz');
+insert into employee values(2, 'Chakma', 35,'2021-09-11',1200,'Dresden');
+insert into employee values(3, 'Weber', 27,'2020-01-09',2000,'Leipzig');
+insert into employee values(4, 'Ludwig', 27,'2020-01-09',3000,'Leipzig');
+insert into employee values(5, 'Alfred', 47,'2020-01-09',5000,'Munich');
+insert into employee values(6, 'Konig', 57,'2020-01-09',7000,'Köln');
+select *from employee;
+#How to count total records
+select count(*) from employee;
+select count(*) as total_row_count from employee;
+
+--display all column in the final result
+select * from employee;
+#Display specific column in the final result
+
+select  name, salary from employee;
+# alias for multiple COLUMN
+select name as employee_name, salary as employee_salary from employee;
+#Distinct operations
+select * from employee;
+---how many unique hiring date in the employee table when employees joined it   
+select distinct(hiring_date) from employee;
+select distinct(hiring_date) as distinct_hiring_date from employee;
+select * from employee;
+# how many unique age values in the table??
+select count(distinct(age)) as how_many_age from employee;
+#increment salary of each employee by 20% and display result with new salary
+select id,
+       name,
+       salary as old_salary,
+       (salary+salary*0.2) as new_salary
+from employee;
