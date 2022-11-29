@@ -77,3 +77,22 @@ alter table employee add constraint id_unique unique(id);
 insert into employee values(1,'Shashank','RJPM','2021-08-01');
 #drop constraint
 alter table employee drop constraint id_unique;
+create table person(
+    id int,
+    name varchar(50),
+    age int,
+    --primary key(id)
+    constraint pk primary key (id)
+);
+select * from person;
+insert into person values(1,'kul',23);
+# Try to insert duplicate value for primary key COLUMN
+insert into person values(1,'Chakma', 37);
+## primary key can not be null
+insert into person values(null, 'chakma', 35);
+alter table person add constraint age_unq unique(age);
+select * from person;
+insert into person values(2, 'Weber', 28);
+insert into person values(3,'Amit', null);
+insert into person values(4,'Charon', null);
+insert into person values(5,'Depak', null);
