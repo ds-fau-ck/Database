@@ -161,3 +161,12 @@ update employee set age=20;
 select *from employee;
 --update the salary of employee after giving 20% increment
 update employee set salary=salary+salary*0.2;
+#How to filter data using where clause
+select *from employee where hiring_date='2021-09-11';
+select *from employee;
+#update the salary of employee who joined the company on 2021-08-10 to 8000
+update employee set salary=8000 where hiring_date='2020-01-09';
+#how to delete specific record from tables using delete command
+--- delete records of those employees who joind company on 2020-01-09
+delete from employee where hiring_date='2020-01-09';
+select * from employee;
