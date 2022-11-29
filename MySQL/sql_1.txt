@@ -96,3 +96,17 @@ insert into person values(2, 'Weber', 28);
 insert into person values(3,'Amit', null);
 insert into person values(4,'Charon', null);
 insert into person values(5,'Depak', null);
+-- create tables for foreign key demo
+create table customer(
+    cust_id int,
+    name varchar(50),
+    age int,
+    constraint pk primary key(cust_id)
+);
+create table orders(
+    order_id int,
+    order_num int,
+    customer_id int,
+    constraint pk primary key(order_id),
+    constraint fk foreign key(customer_id) references customer(cust_id)
+);
