@@ -61,3 +61,12 @@ select * from employee;
 select * from employee where hiring_date between '2021-08-05' and '2021-08-11';
 #get all employees who are getting salary in the range of 10000 to 28000
 select * from employee where salary between 10000 and 28000;
+# how to use like operation in where clause
+# % -> zero, one or more than one characters
+# _ -> only one character
+# get all those employees where name start with 'S'
+select * from employee where name like 'S%';
+select * from employee where name like 'Sh%';
+# get all tose employees where name end with 'l'
+select * from employee where name like '%l';
+
