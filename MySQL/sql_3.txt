@@ -83,3 +83,33 @@ select * from employee;
 select * from employee where age is Null;
 # get all those employees whose salary value is not null
 select * from employee where salary is not null;
+
+# Table and data for group by
+create table order_data(
+cust_id int, 
+order_id int,
+country varchar(30),
+state varchar(50)
+
+);
+insert into order_data values(1,100,'USA','Seatol'),
+(2,101,'INDIA','UP'),
+(2,103,'INDIA','Bihar'),
+(4,108,'USA','WDC'),
+(5,109,'UK','London'),
+(4,110,'USA','WDC'),
+(3,120,'INDIA','AP'),
+(2,121,'INDIA','Goa'),
+(1,131,'USA','Seatol'),
+(6,141,'USA','Seatol'),
+(7,150,'USA','Seatol');
+select * from order_data;
+#claculate total order placed country wise
+select country, cust_id, count(*) as order_count from order_data group by country;
+select * from employee;
+update employee set age=25 where id=10;
+update employee set salary=15000 where id=11;
+select * from employee;
+# write a query to find the total salary by each age group
+select age, sum(salary) as total_salary 
+from employee group by age;
