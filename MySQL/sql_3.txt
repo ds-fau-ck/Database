@@ -1,0 +1,20 @@
+use test_db_three;
+create table if not exists employee(
+id int,
+name varchar(50),
+age int,
+hiring_date date,
+salary int, city varchar(50)
+
+);
+insert into employee values(1,'Shushank', 24,'2021-08-10',10000,'Lucknow');
+insert into employee values(1,'Rahul', 25,'2021-08-10',20000,'Khajuraho');
+insert into employee values(1,'Sunny', 22,'2021-08-11',11000,'Bangalor');
+insert into employee values(1,'Amit', 25,'2021-08-11',12000,'Noida');
+insert into employee values(1,'Punnet', 26,'2021-08-12',50000,'Lucknow');
+
+select * from employee;
+# how to perform multi update
+update employee set age=20,salary=25000 where hiring_date='2021-08-10';
+SET SQL_SAFE_UPDATES = 0;
+select * from employee;
