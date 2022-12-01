@@ -37,3 +37,6 @@ select * from employee order by name desc;
 select * from employee order by salary desc, name asc;
 #when we ignore multilevel ordering
 select * from employee order by salary desc;
+#write a query to find the employee who is getting maximum salary
+select * from employee order by salary desc limit 1;
+
