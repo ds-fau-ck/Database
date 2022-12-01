@@ -69,4 +69,17 @@ select * from employee where name like 'S%';
 select * from employee where name like 'Sh%';
 # get all tose employees where name end with 'l'
 select * from employee where name like '%l';
-
+# get all those employees whose name start with 'S' and ends with 'k'
+select * from employee where name like 'S%k';
+# get all the employees whose name will have exact five characters
+select * from employee where name like '_____';
+#return all those employees whose name contains at least 5 character
+select * from employee where name like '%_____%';
+# How to use IS NULL or IS NOT NULL in the where clause
+insert into employee values(10,'Kapil', null, '2021-08-10', 10000,'Assam');
+insert into employee values(11,'Nikhil',30,'2021-08-10', null, 'Assam');
+select * from employee;
+#get all those employees whose age is null
+select * from employee where age is Null;
+# get all those employees whose salary value is not null
+select * from employee where salary is not null;
