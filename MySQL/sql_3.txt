@@ -113,3 +113,13 @@ select * from employee;
 # write a query to find the total salary by each age group
 select age, sum(salary) as total_salary 
 from employee group by age;
+#Calculate different aggregated metrics for salary
+select age,
+	   sum(salary) as total_salary_by_each_age_group,
+       max(salary) as max_salary_by_each_age_group,
+       min(salary) as min_salary_by_each_age_group,
+       avg(salary) as avg_salary_by_each_age_group,
+       count(*) as  total_employee_by_each_age_group
+from employee group by age;
+#Clálculate total order placed country wise
+select country, count(*) as order_count_by_country from order_data group by country;
