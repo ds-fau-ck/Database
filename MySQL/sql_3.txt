@@ -28,3 +28,8 @@ insert into auto_increment_example(name) values('Shushank');
 insert into auto_increment_example(name) values('Rahul');
 
 select * from auto_increment_example;
+select *from employee limit 2;
+select * from employee;
+#sorting the data ascending  and descending order... ascending is by default
+select * from employee order by name;
+select * from employee order by name desc;
