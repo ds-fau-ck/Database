@@ -40,3 +40,24 @@ select * from employee order by salary desc;
 #write a query to find the employee who is getting maximum salary
 select * from employee order by salary desc limit 1;
 
+#conditional operator
+select * from employee;
+select * from employee where salary>20000;
+select * from employee where salary <20000;
+select * from employee;
+# filter the record where age of employees is equal to 20
+select * from employee where age=20;
+select * from employee where age !=20;
+select * from employee where age <> 20;
+#find those employees who joined the company on 11th august and their salary is less than 11500
+select * from employee where hiring_date='2021-08-11' and salary <11500;
+select * from employee;
+#find those employees who joined the company on 11th august or their salary is less than 20000
+select * from employee where hiring_date >'2021-08-01' or salary<20000;
+
+select * from employee;
+#how to use Between operation in where clause
+# get all employees data who joined the company between hiring_data 2021-08-01 and 2021-08-11
+select * from employee where hiring_date between '2021-08-05' and '2021-08-11';
+#get all employees who are getting salary in the range of 10000 to 28000
+select * from employee where salary between 10000 and 28000;
