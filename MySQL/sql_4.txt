@@ -18,3 +18,18 @@ insert into order_data values(1,131,'USA','Seattle');
 insert into order_data values(6,142,'USA','Seattle');
 insert into order_data values(7,150,'USA','Seattle');
 select * from order_data;
+#Use having clause
+#write a query to find the country where only 1 order was placed
+select country from order_data group by country having count(*)=1;
+#write a query to find the country where only 1 order was placed
+select country from order_data group by country having count(*)=4;
+
+#where clause and group by clause->What should tbe the proper sequence?
+#ans-> Where clause and then Group GROUP BY 
+
+# How to use GROUP_CONCAT
+# Query write a query to print distinct states present in the dataset for each country
+select country, GROUP_CONCAT(state) as state_in_country from order_data group by country;
+select country, group_concat(distinct state) as states_in_country from order_data group by country;
+select country, group_concat(distinct state order by state desc) as state_in_country from order_data group by country;
+select country, group_concat(distinct state order by state desc separator '<->') as state_country from order_data group by country;
