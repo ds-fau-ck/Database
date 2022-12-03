@@ -33,3 +33,11 @@ select country, GROUP_CONCAT(state) as state_in_country from order_data group by
 select country, group_concat(distinct state) as states_in_country from order_data group by country;
 select country, group_concat(distinct state order by state desc) as state_in_country from order_data group by country;
 select country, group_concat(distinct state order by state desc separator '<->') as state_country from order_data group by country;
+
+create table employee(
+    id int,
+    name varchar(50),
+    salary int
+);
+insert into employee values(1,'Shushank', 5000),(2,'Amit', 5500),(3,'Rahul', 7000),(4,'Rohit', 7000),(5,'Nitin', 5000),(6,'kul', 8000);
+select * from employee;
