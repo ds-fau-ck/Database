@@ -63,4 +63,34 @@ create table if not exists supplier_data(
 insert into supplier_data values(300,'USA'),(303,'UK');
 #write a query to find all customer order data where customer and supplier both living in same country
 select * from supplier_data;
+create table if not exists student_marks
+(
+    stu_id int,
+    stu_name varchar(50),
+    total_marks int
+);
+insert into student_marks values(1,'Shashank',50);
+insert into student_marks values(2,'Rahul',91);
+insert into student_marks values(3,'Amit',74);
+insert into student_marks values(4,'Nikhil',65);
+insert into student_marks values(5,'Rohit',86);
+insert into student_marks values(6,'Deepak',77);
+select * from student_marks;
+#write a query to calculate the grades for a student by a following criteria
+# marks >= 90 , grade A+
+# marks < 90 and marks >=85, grade A
+# marks < 85 and marks >=75, grade B+
+# marks < 75 and marks >=60, grade B
+# marks < 60 , grade C
 
+select stu_id,
+       stu_name,
+       total_marks,
+       case 
+            when total_marks >=90 then 'A+'
+            when total_marks >=85 and total_marks<90 then 'A'
+            when total_marks >=75 and total_marks <85 then 'B+'
+            when total_marks >=60 and total_marks <75 then 'B'
+            else 'C'
+        end as Grade
+from student_marks;
