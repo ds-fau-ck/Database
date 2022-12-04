@@ -41,3 +41,4 @@ create table employee(
 );
 insert into employee values(1,'Shushank', 5000),(2,'Amit', 5500),(3,'Rahul', 7000),(4,'Rohit', 7000),(5,'Nitin', 5000),(6,'kul', 8000);
 select * from employee;
+select * from employee where salary > (select salary from employee where name='Rohit');
