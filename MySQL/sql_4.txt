@@ -112,4 +112,11 @@ select node,
             else 'INNER'
        END as node_type
 from tree;
-
+# Example for Case When with Group By - Amazon SQL Questions
+create table transactions
+(
+    trx_date date,
+    merchant_id varchar(10),
+    amount int,
+    payment_mode varchar(10)
+);
