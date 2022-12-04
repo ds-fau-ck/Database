@@ -42,3 +42,25 @@ create table employee(
 insert into employee values(1,'Shushank', 5000),(2,'Amit', 5500),(3,'Rahul', 7000),(4,'Rohit', 7000),(5,'Nitin', 5000),(6,'kul', 8000);
 select * from employee;
 select * from employee where salary > (select salary from employee where name='Rohit');
+#use of in and not in   
+# write a query to print all order which are placed in Seatal and Goa
+select * from order_data;
+select * from order_data where country_state='Seattle' or country_state='Goa';
+#Best answer
+select * from order_data where country_state in ('seattle','Goa');
+create table if not exists customer_order_data(
+    order_id int,
+    cust_id int,
+    supplier_id int,
+    cust_country varchar(50)
+);
+insert into customer_order_data values(101,200,300,'USA'),(102,201,301,'INDIA'),(103,202,302,'USA'),(104,203,303,'UK');
+select * from customer_order_data;
+create table if not exists supplier_data(
+    supplier_id int,
+    sup_country varchar(50)
+);
+insert into supplier_data values(300,'USA'),(303,'UK');
+#write a query to find all customer order data where customer and supplier both living in same country
+select * from supplier_data;
+
