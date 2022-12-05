@@ -112,11 +112,22 @@ select node,
             else 'INNER'
        END as node_type
 from tree;
-# Example for Case When with Group By - Amazon SQL Questions
-create table transactions
-(
-    trx_date date,
-    merchant_id varchar(10),
+#Example for case when with group by Amazon SQL questions
+create table if not exists amazon_sell(
+    transaction_date date,
+    merchant varchar(50),
     amount int,
-    payment_mode varchar(10)
+    payment_mode varchar(50)
 );
+insert into amazon_sell values('2022-04-02', 'm1', 150, 'CASH');
+insert into amazon_sell values('2022-04-02', 'm1', 500, 'ONLINE');
+insert into amazon_sell values('2022-04-03', 'm2', 450, 'ONLINE');
+insert into amazon_sell values('2022-04-03', 'm1', 100, 'CASH');
+insert into amazon_sell values('2022-04-02', 'm3', 600, 'CASH');
+insert into amazon_sell values('2022-04-05', 'm5', 200, 'ONLINE');
+insert into amazon_sell values('2022-04-05', 'm2', 100, 'ONLINE');
+select * from amazon_sell;
+select merchant,
+       sum(case when payment_mode='CASH' then amount else 0 end) as cash_amount,
+       sum(case when payment_mode='ONLINE' then amount else 0 end) as online_amount
+     from amazon_sell group by merchant;
