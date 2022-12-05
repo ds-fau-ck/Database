@@ -56,3 +56,6 @@ select *,
 from shop_sales_data;
 #Using group by
 select shop_id, count(*) as total_sale_count_by_shop from shop_sales_data group by shop_id;
+
+select *,
+        count(*) over(partition by shop_id order by sales_amount desc) as total_sale_count_by_shops from shop_sales_data;
