@@ -161,3 +161,18 @@ select
 o.*,c.*
 from orders o 
 left join customers c on o.cust_id=c.cust_id;
+
+# how to join more than 2 table together
+create table if not exists shippers(
+    ship_id int,
+    ship_name varchar(50)
+);
+insert into shippers values(3,'abc');
+insert into shippers values(1, 'xyz');
+select * from shippers;
+
+select
+o.*,c.*,s.*
+from orders o  
+inner join customers c on o.cust_id=c.cust_id
+inner join shippers s on o.shiper_id=s.ship_id;
