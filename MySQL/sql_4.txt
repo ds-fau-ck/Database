@@ -131,3 +131,33 @@ select merchant,
        sum(case when payment_mode='CASH' then amount else 0 end) as cash_amount,
        sum(case when payment_mode='ONLINE' then amount else 0 end) as online_amount
      from amazon_sell group by merchant;
+create table if not exists orders(
+    order_id int,
+    cust_id int,
+    order_date date,
+    shiper_id int
+);
+create table if not exists customers(
+    cust_id int,
+    cust_name varchar(40),
+    country varchar(50)
+);
+insert into orders values(10308, 2, '2022-09-15', 3);
+insert into orders values(10309, 30, '2022-09-16', 1);
+insert into orders values(10310, 41, '2022-09-19', 2);
+
+insert into customers values(1, 'Neel', 'India');
+insert into customers values(2, 'Nitin', 'USA');
+insert into customers values(3, 'Mukesh', 'UK');
+select * from orders;
+select * from customers;
+#perform inner join  
+#get the customer information for each order if value of customer is present in orders table  
+select 
+o.*,c.*
+from orders o 
+inner join customers c on o.cust_id=c.cust_id;
+select
+o.*,c.*
+from orders o 
+left join customers c on o.cust_id=c.cust_id;
