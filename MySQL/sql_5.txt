@@ -89,4 +89,11 @@ select * from amazon_sales_data;
 select *,
         avg(sales_amount) over(order by sales_data) as rolling_sum from amazon_sales_data;
 
+#calculate the date wise rolling average and sum of amazon sales
+select *,
+        avg(sales_amount) over(order by sales_data) as rolling_avg,
+        sum(sales_amount) over(order by sales_data) as rolling_sum 
+from amazon_sales_data;
+
+
 
