@@ -73,4 +73,20 @@ from shop_sales_data;
 # partition by and order by together
 select *,
         sum(sales_amount) over(partition by shop_id order by sales_amount desc) as total_sum_of_sales from shop_sales_data;
+create table if not exists amazon_sales_data(
+    sales_data date,
+    sales_amount int
+);
+insert into amazon_sales_data values('2022-08-21',500);
+insert into amazon_sales_data values('2022-08-22',600);
+insert into amazon_sales_data values('2022-08-19',300);
+
+insert into amazon_sales_data values('2022-08-18',200);
+
+insert into amazon_sales_data values('2022-08-25',800);
+select * from amazon_sales_data;
+#calculate the date wise rolling average of amazon sales
+select *,
+        avg(sales_amount) over(order by sales_data) as rolling_sum from amazon_sales_data;
+
 
