@@ -31,3 +31,28 @@ select
 c.*,o.*
 from orders_1 o  
 inner join customers_1 c on o.cust_id=c.id and o.amount>400;
+c.*,o.*
+from orders_1 o  
+inner join customers_1 c on o.cust_id=c.id and o.amount>400;
+
+# Window Functions
+create table shop_sales_data
+(
+sales_date date,
+shop_id varchar(5),
+sales_amount int
+);
+
+insert into shop_sales_data values('2022-02-14','S1',200);
+insert into shop_sales_data values('2022-02-15','S1',300);
+insert into shop_sales_data values('2022-02-14','S2',600);
+insert into shop_sales_data values('2022-02-15','S3',500);
+insert into shop_sales_data values('2022-02-18','S1',400);
+insert into shop_sales_data values('2022-02-17','S2',250);
+insert into shop_sales_data values('2022-02-20','S3',300);
+select * from shop_sales_data;
+select *,
+        count(*) over(partition by shop_id) as total_sale_count_by_shops
+from shop_sales_data;
+#Using group by
+select shop_id, count(*) as total_sale_count_by_shop from shop_sales_data group by shop_id;
