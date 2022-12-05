@@ -66,3 +66,11 @@ select *,
         count(*) over(order by sales_amount desc) as total_sales_count_by_shops from shop_sales_data;
 select *,
         sum(sales_amount) over(order by sales_amount desc) as total_sum_of_sales from shop_sales_data;
+#if we use only partition by  
+select *,
+        sum(sales_amount) over(partition by shop_id) as total_sum_of_sales
+from shop_sales_data;
+# partition by and order by together
+select *,
+        sum(sales_amount) over(partition by shop_id order by sales_amount desc) as total_sum_of_sales from shop_sales_data;
+
