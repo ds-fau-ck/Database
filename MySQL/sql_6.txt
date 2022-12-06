@@ -1,1 +1,22 @@
 
+# Create View
+create table employees_1(
+  emp_id int,
+  emp_name varchar(50),
+  mobile BIGINT,
+  dept_name varchar(50),
+  salary int 
+);
+
+insert into employees_1 values(1,'Shashank',778768768,'Software',1000);
+insert into employees_1 values(2,'Rahul',876778877,'IT',2000);
+insert into employees_1 values(3,'Amit',098798998,'HR',5000);
+
+insert into employees_1 values(4,'Nikhil',67766767,'IT',3000);
+
+select * from employees_1;
+create view employee_date_for_finance as select emp_id, emp_name,salary from employees_1;
+select * from employee_date_for_finance;
+create view department_wise_salary as select dept_name, sum(salary) from employees_1 group by dept_name;
+drop view department_wise_salary;
+create view department_wise_salary as select dept_name, sum(salary) as total_salary from employees_1 group by dept_name;
