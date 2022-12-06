@@ -20,3 +20,35 @@ select * from employee_date_for_finance;
 create view department_wise_salary as select dept_name, sum(salary) from employees_1 group by dept_name;
 drop view department_wise_salary;
 create view department_wise_salary as select dept_name, sum(salary) as total_salary from employees_1 group by dept_name;
+#union and union all 
+create table student(
+    stu_id int,
+    name varchar(50),
+    email varchar(50),
+    city varchar(50)
+);
+#drop table student;
+insert into student values(1,'Shashank','abc@gmail.com','Lockaw');
+insert into student values(2,'Rahul','abc1@gmail.com','mp');
+insert into student values(3,'Amit','abc2@gmail.com','noida');
+insert into student values(4,'Nikhil','abc3@gmail.com','bangalore');
+insert into student values(4,'Sunny','abc4@gmail.com','bangalore');
+
+create table student2(
+    stu_id int,
+    name varchar(50),
+    email varchar(50),
+    city varchar(50)
+);
+insert into student values(1,'Shashank','abc@gmail.com','Lockaw');
+insert into student values(6,'Anuj','abc1@gmail.com','mp');
+insert into student values(8,'Mohit','abc2@gmail.com','noida');
+insert into student values(10,'Sagor','abc3@gmail.com','bangalore');
+insert into student values(4,'Sunny','abc4@gmail.com','bangalore');
+#Query for union operations
+ #We are organizing a tournament between college1 and college2
+ select * from student
+ union select *from student2;
+ select * from student
+ union all 
+ select * from student2;
