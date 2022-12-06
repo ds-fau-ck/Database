@@ -52,3 +52,31 @@ insert into student values(4,'Sunny','abc4@gmail.com','bangalore');
  select * from student
  union all 
  select * from student2;
+#Common table expression
+ create table amazon_employees(
+    emp_id int,
+    emp_name varchar(30),
+    dept_id int,
+    salary int
+ );
+ insert into amazon_employees values(1, 'Shashank', 100,10000);
+ insert into amazon_employees values(2, 'Rahul', 100,20000);
+ insert into amazon_employees values(3, 'Amit', 101,15000);
+ insert into amazon_employees values(4, 'Mohit', 101,17000);
+ insert into amazon_employees values(5, 'Nikhil', 102,30000);
+
+ select * from amazon_employees;
+ create table department(
+    dept_id int,
+    dept_name varchar(50)
+ );
+ insert into department values(100,'Software');
+ insert into department values(101,'HR');
+ insert into department values(103,'IT');
+ insert into department values(104,'Finance');
+ select * from department;
+ #write a query to print the name of department along with the total salary paid in each department
+ select 
+ d.dept_name, tmp.total_salary
+ from (select dept_id, sum(salary) as total_salary from amazon_employees group by dept_id) tmp
+ inner join department d on tmp.dept_id=d.dept_id;
