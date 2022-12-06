@@ -1,5 +1,5 @@
 
-# Create View
+# Create View in SQL
 create table employees_1(
   emp_id int,
   emp_name varchar(50),
