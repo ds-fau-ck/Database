@@ -1,0 +1,82 @@
+
+# Create View in SQL
+create table employees_1(
+  emp_id int,
+  emp_name varchar(50),
+  mobile BIGINT,
+  dept_name varchar(50),
+  salary int 
+);
+
+insert into employees_1 values(1,'Shashank',778768768,'Software',1000);
+insert into employees_1 values(2,'Rahul',876778877,'IT',2000);
+insert into employees_1 values(3,'Amit',098798998,'HR',5000);
+
+insert into employees_1 values(4,'Nikhil',67766767,'IT',3000);
+
+select * from employees_1;
+create view employee_date_for_finance as select emp_id, emp_name,salary from employees_1;
+select * from employee_date_for_finance;
+create view department_wise_salary as select dept_name, sum(salary) from employees_1 group by dept_name;
+drop view department_wise_salary;
+create view department_wise_salary as select dept_name, sum(salary) as total_salary from employees_1 group by dept_name;
+#union and union all 
+create table student(
+    stu_id int,
+    name varchar(50),
+    email varchar(50),
+    city varchar(50)
+);
+#drop table student;
+insert into student values(1,'Shashank','abc@gmail.com','Lockaw');
+insert into student values(2,'Rahul','abc1@gmail.com','mp');
+insert into student values(3,'Amit','abc2@gmail.com','noida');
+insert into student values(4,'Nikhil','abc3@gmail.com','bangalore');
+insert into student values(4,'Sunny','abc4@gmail.com','bangalore');
+
+create table student2(
+    stu_id int,
+    name varchar(50),
+    email varchar(50),
+    city varchar(50)
+);
+insert into student values(1,'Shashank','abc@gmail.com','Lockaw');
+insert into student values(6,'Anuj','abc1@gmail.com','mp');
+insert into student values(8,'Mohit','abc2@gmail.com','noida');
+insert into student values(10,'Sagor','abc3@gmail.com','bangalore');
+insert into student values(4,'Sunny','abc4@gmail.com','bangalore');
+#Query for union operations
+ #We are organizing a tournament between college1 and college2
+ select * from student
+ union select *from student2;
+ select * from student
+ union all 
+ select * from student2;
+#Common table expression
+ create table amazon_employees(
+    emp_id int,
+    emp_name varchar(30),
+    dept_id int,
+    salary int
+ );
+ insert into amazon_employees values(1, 'Shashank', 100,10000);
+ insert into amazon_employees values(2, 'Rahul', 100,20000);
+ insert into amazon_employees values(3, 'Amit', 101,15000);
+ insert into amazon_employees values(4, 'Mohit', 101,17000);
+ insert into amazon_employees values(5, 'Nikhil', 102,30000);
+
+ select * from amazon_employees;
+ create table department(
+    dept_id int,
+    dept_name varchar(50)
+ );
+ insert into department values(100,'Software');
+ insert into department values(101,'HR');
+ insert into department values(103,'IT');
+ insert into department values(104,'Finance');
+ select * from department;
+ #write a query to print the name of department along with the total salary paid in each department
+ select 
+ d.dept_name, tmp.total_salary
+ from (select dept_id, sum(salary) as total_salary from amazon_employees group by dept_id) tmp
+ inner join department d on tmp.dept_id=d.dept_id;

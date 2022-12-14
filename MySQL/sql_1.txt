@@ -43,3 +43,130 @@ create table if not exists employee_with_constraints(
     unique(id),
     check(salary>1000)
 );
+
+create table if not exists employee_with_constraint_tmp(
+    id int not null,
+    name varchar(50) not null,
+    salary double,
+    hiring_data date default '2021-01-01',
+    constraint unique_id unique(id),
+    constraint salary_check check(salary>1000)
+);
+insert into employee_with_constraint_tmp values(1, 'kul', 1500, '2022-01-03');
+select *from employee_with_constraint_tmp;
+create database class2_db;
+use class2_db;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    address varchar(50),
+    city varchar(50)
+);
+insert into employee values(1,'kul','Brühl','Chemnitz');
+#add new column as data of birth
+alter table employee add DOB date;
+select * from employee;
+#change or modify exiting column in a TABLE
+alter table employee modify column name varchar(100);
+alter table employee drop city;
+select *from employee;
+#change the column name
+alter table employee rename column name to full_name;
+# Add unique integrity constraint on id COLUMN
+alter table employee add constraint id_unique unique(id);
+insert into employee values(1,'Shashank','RJPM','2021-08-01');
+#drop constraint
+alter table employee drop constraint id_unique;
+create table person(
+    id int,
+    name varchar(50),
+    age int,
+    --primary key(id)
+    constraint pk primary key (id)
+);
+select * from person;
+insert into person values(1,'kul',23);
+# Try to insert duplicate value for primary key COLUMN
+insert into person values(1,'Chakma', 37);
+## primary key can not be null
+insert into person values(null, 'chakma', 35);
+alter table person add constraint age_unq unique(age);
+select * from person;
+insert into person values(2, 'Weber', 28);
+insert into person values(3,'Amit', null);
+insert into person values(4,'Charon', null);
+insert into person values(5,'Depak', null);
+-- create tables for foreign key demo
+create table customer(
+    cust_id int,
+    name varchar(50),
+    age int,
+    constraint pk primary key(cust_id)
+);
+create table orders(
+    order_id int,
+    order_num int,
+    customer_id int,
+    constraint pk primary key(order_id),
+    constraint fk foreign key(customer_id) references customer(cust_id)
+);
+);
+-- difference between drop and truncate command
+select * from person;
+truncate person;
+drop table person;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    age int,
+    hiring_date date,
+    salary int,
+    city varchar(50)
+);
+insert into employee values(1, 'kul', 37, '2021-01-03',1000, 'Chemnitz');
+insert into employee values(2, 'Chakma', 35,'2021-09-11',1200,'Dresden');
+insert into employee values(3, 'Weber', 27,'2020-01-09',2000,'Leipzig');
+insert into employee values(4, 'Ludwig', 27,'2020-01-09',3000,'Leipzig');
+insert into employee values(5, 'Alfred', 47,'2020-01-09',5000,'Munich');
+insert into employee values(6, 'Konig', 57,'2020-01-09',7000,'Köln');
+select *from employee;
+#How to count total records
+select count(*) from employee;
+select count(*) as total_row_count from employee;
+
+--display all column in the final result
+select * from employee;
+#Display specific column in the final result
+
+select  name, salary from employee;
+# alias for multiple COLUMN
+select name as employee_name, salary as employee_salary from employee;
+#Distinct operations
+select * from employee;
+---how many unique hiring date in the employee table when employees joined it   
+select distinct(hiring_date) from employee;
+select distinct(hiring_date) as distinct_hiring_date from employee;
+select * from employee;
+# how many unique age values in the table??
+select count(distinct(age)) as how_many_age from employee;
+#increment salary of each employee by 20% and display result with new salary
+select id,
+       name,
+       salary as old_salary,
+       (salary+salary*0.2) as new_salary
+from employee;
+
+--Syntax for update command
+update employee set age=20;
+select *from employee;
+--update the salary of employee after giving 20% increment
+update employee set salary=salary+salary*0.2;
+#How to filter data using where clause
+select *from employee where hiring_date='2021-09-11';
+select *from employee;
+#update the salary of employee who joined the company on 2021-08-10 to 8000
+update employee set salary=8000 where hiring_date='2020-01-09';
+#how to delete specific record from tables using delete command
+--- delete records of those employees who joind company on 2020-01-09
+delete from employee where hiring_date='2020-01-09';
+select * from employee;
