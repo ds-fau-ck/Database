@@ -11,6 +11,9 @@ create table department_data
     > fields terminated by ','; 
     
 describe department_data;
+hadoop fs -ls /user/hive/
+hadoop fs -ls /user/hive/warehouse/hive_class_b1*
+hadoop fs -ls /user/hive/warehause/hive_class_b1.db/department_data
 
 describe formatted department_data;
 # For data load from local
