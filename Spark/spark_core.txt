@@ -68,4 +68,17 @@ df1.show()
 |          200|          Operations|        - |       1700|
 +-------------+--------------------+----------+-----------+
 df1.printSchema()
+root
+ |-- DEPARTMENT_ID: string (nullable = true)
+ |-- DEPARTMENT_NAME: string (nullable = true)
+ |-- MANAGER_ID: string (nullable = true)
+ |-- LOCATION_ID: string (nullable = true)
+df2=spark.read.option("header",True).option("inferSchema",True).csv("/input_data/departments.csv")
+df2.printSchema()
+root
+ |-- DEPARTMENT_ID: integer (nullable = true)
+ |-- DEPARTMENT_NAME: string (nullable = true)
+ |-- MANAGER_ID: string (nullable = true)
+ |-- LOCATION_ID: integer (nullable = true)
+
 
