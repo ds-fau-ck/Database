@@ -7,3 +7,29 @@ from pyspark.sql.functions import *
 +-------------+
 |           50|
 +-------------+
+
+>>> empDf.select(count("salary").alias("total_count")).show()
++-----------+
+|total_count|
++-----------+
+|         50|
++-----------+
+
+>>> empDf.select(count("salary")).show()
++-------------+
+|count(salary)|
++-------------+
+|           50|
++-------------+
+>>> empDf.select(max("salary").alias("Max_Salary")).show()
++----------+
+|Max_Salary|
++----------+
+|     24000|
++----------+
+>>> empDf.select(avg("salary").alias("avg_salary")).show()
++----------+
+|avg_salary|
++----------+
+|   6182.32|
++----------+
