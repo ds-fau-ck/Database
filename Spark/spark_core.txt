@@ -253,6 +253,58 @@ empDf.select(empDf["EMPLOYEE_ID"],empDf["FIRST_NAME"]).show()
 |        110|      John|
 +-----------+----------+
 only showing top 20 rows
- 
+from pyspark.sql.functions import col
+empDf.select(col("EMPLOYEE_ID"), col("FIRST_NAME")).show()
++-----------+----------+
+|EMPLOYEE_ID|FIRST_NAME|
++-----------+----------+
+|        198|    Donald|
+|        199|   Douglas|
+|        200|  Jennifer|
+|        201|   Michael|
+|        202|       Pat|
+|        203|     Susan|
+|        204|   Hermann|
+|        205|   Shelley|
+|        206|   William|
+|        100|    Steven|
+|        101|     Neena|
+|        102|       Lex|
+|        103| Alexander|
+|        104|     Bruce|
+|        105|     David|
+|        106|     Valli|
+|        107|     Diana|
+|        108|     Nancy|
+|        109|    Daniel|
+|        110|      John|
++-----------+----------+
+only showing top 20 rows
+empDf.select(col("EMPLOYEE_ID").alias("EMP_ID"), col("FIRST_NAME").alias("F_NAME")).show()
++------+---------+
+|EMP_ID|   F_NAME|
++------+---------+
+|   198|   Donald|
+|   199|  Douglas|
+|   200| Jennifer|
+|   201|  Michael|
+|   202|      Pat|
+|   203|    Susan|
+|   204|  Hermann|
+|   205|  Shelley|
+|   206|  William|
+|   100|   Steven|
+|   101|    Neena|
+|   102|      Lex|
+|   103|Alexander|
+|   104|    Bruce|
+|   105|    David|
+|   106|    Valli|
+|   107|    Diana|
+|   108|    Nancy|
+|   109|   Daniel|
+|   110|     John|
++------+---------+
+only showing top 20 rows
  
  
