@@ -1,0 +1,9 @@
+from pyspark.sql.functions import *
+ empDf.count()
+50
+>>> empDf.select(count("salary")).show()
++-------------+
+|count(salary)|
++-------------+
+|           50|
++-------------+
