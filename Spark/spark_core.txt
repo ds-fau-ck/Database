@@ -499,4 +499,26 @@ empDf.filter(col("SALARY")<5000).select("EMPLOYEE_ID","FIRST_NAME","SALARY").sho
 |        139|      John|  2700|
 |        140|    Joshua|  2500|
 +-----------+----------+------+
-
+empDf.filter((col("DEPARTMENT_ID")==50) & (col("SALARY")<5000)).select("EMPLOYEE_ID","FIRST_NAME","SALARY","DEPARTMENT_ID").show(100)
++-----------+----------+------+-------------+
+|EMPLOYEE_ID|FIRST_NAME|SALARY|DEPARTMENT_ID|
++-----------+----------+------+-------------+
+|        198|    Donald|  2600|           50|
+|        199|   Douglas|  2600|           50|
+|        125|     Julia|  3200|           50|
+|        126|     Irene|  2700|           50|
+|        127|     James|  2400|           50|
+|        128|    Steven|  2200|           50|
+|        129|     Laura|  3300|           50|
+|        130|     Mozhe|  2800|           50|
+|        131|     James|  2500|           50|
+|        132|        TJ|  2100|           50|
+|        133|     Jason|  3300|           50|
+|        134|   Michael|  2900|           50|
+|        135|        Ki|  2400|           50|
+|        136|     Hazel|  2200|           50|
+|        137|    Renske|  3600|           50|
+|        138|   Stephen|  3200|           50|
+|        139|      John|  2700|           50|
+|        140|    Joshua|  2500|           50|
++-----------+----------+------+-------------+
