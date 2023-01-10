@@ -721,3 +721,29 @@ only showing top 20 rows
 |       null|         null|             Payroll|
 +-----------+-------------+--------------------+
 
+>>> empDf.alias("emp1").join(empDf.alias("emp2"), col("emp1.MANAGER_ID")==col("emp2.EMPLOYEE_ID"),"inner").select(col("emp1.MANAGER_ID"),col("emp2.FIRST_NAME"),col("emp2.LAST_NAME")).show()
++----------+----------+---------+
+|MANAGER_ID|FIRST_NAME|LAST_NAME|
++----------+----------+---------+
+|       201|   Michael|Hartstein|
+|       205|   Shelley|  Higgins|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       100|    Steven|     King|
+|       101|     Neena|  Kochhar|
+|       101|     Neena|  Kochhar|
+|       101|     Neena|  Kochhar|
+|       101|     Neena|  Kochhar|
+|       101|     Neena|  Kochhar|
+|       102|       Lex|  De Haan|
+|       103| Alexander|   Hunold|
+|       103| Alexander|   Hunold|
+|       103| Alexander|   Hunold|
++----------+----------+---------+
+only showing top 20 rows
