@@ -747,3 +747,59 @@ only showing top 20 rows
 |       103| Alexander|   Hunold|
 +----------+----------+---------+
 only showing top 20 rows
+>>> empDf.alias("emp1").join(empDf.alias("emp2"), col("emp1.manager_id")==col("emp2.employee_id"),"inner").select(col("emp1.manager_id"),col("emp2.first_name"), col("emp2.last_name")).dropDuplicates().show(100)
++----------+----------+---------+
+|manager_id|first_name|last_name|
++----------+----------+---------+
+|       122|     Payam| Kaufling|
+|       101|     Neena|  Kochhar|
+|       100|    Steven|     King|
+|       205|   Shelley|  Higgins|
+|       114|       Den| Raphaely|
+|       103| Alexander|   Hunold|
+|       124|     Kevin|  Mourgos|
+|       120|   Matthew|    Weiss|
+|       123|    Shanta|  Vollman|
+|       121|      Adam|    Fripp|
+|       108|     Nancy|Greenberg|
+|       102|       Lex|  De Haan|
+|       201|   Michael|Hartstein|
++----------+----------+---------+
+>>> empDf.join(deptDf,(empDf.DEPARTMENT_ID==deptDf.DEPARTMENT_ID) & (deptDf.LOCATION_ID==1700),"inner").select(empDf.EMPLOYEE_ID,empDf.DEPARTMENT_ID,deptDf.DEPARTMENT_NAME).show()
++-----------+-------------+---------------+
+|EMPLOYEE_ID|DEPARTMENT_ID|DEPARTMENT_NAME|
++-----------+-------------+---------------+
+|        200|           10| Administration|
+|        119|           30|     Purchasing|
+|        118|           30|     Purchasing|
+|        117|           30|     Purchasing|
+|        116|           30|     Purchasing|
+|        115|           30|     Purchasing|
+|        114|           30|     Purchasing|
+|        102|           90|      Executive|
+|        101|           90|      Executive|
+|        100|           90|      Executive|
+|        113|          100|        Finance|
+|        112|          100|        Finance|
+|        111|          100|        Finance|
+|        110|          100|        Finance|
+|        109|          100|        Finance|
+|        108|          100|        Finance|
+|        206|          110|     Accounting|
+|        205|          110|     Accounting|
++-----------+-------------+---------------+
+>>> location_data=[(1700,"INDIA"),(1800,"USA")]
+>>> schema=StructType([StructField("LOCATION_ID", IntegerType(),True),StructField("LOCATION_NAME",StringType(),True)])
+>>> locDf=spark.createDataFrame(data=location_data, schema=schema)
+>>> locDf.printSchema()
+root
+ |-- LOCATION_ID: integer (nullable = true)
+ |-- LOCATION_NAME: string (nullable = true)
+
+>>> locDf.show()
++-----------+-------------+
+|LOCATION_ID|LOCATION_NAME|
++-----------+-------------+
+|       1700|        INDIA|
+|       1800|          USA|
++-----------+-------------+
