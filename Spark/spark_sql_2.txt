@@ -803,3 +803,27 @@ root
 |       1700|        INDIA|
 |       1800|          USA|
 +-----------+-------------+
+>>> empDf.join(deptDf, (empDf.DEPARTMENT_ID == deptDf.DEPARTMENT_ID) & (deptDf.LOCATION_ID == 1700), "inner").join(locDf, deptDf.LOCATION_ID == locDf.LOCATION_ID, "inner").select(empDf.EMPLOYEE_ID, empDf.DEPARTMENT_ID, deptDf.DEPARTMENT_NAME, locDf.LOCATION_NAME).show()
++-----------+-------------+---------------+-------------+
+|EMPLOYEE_ID|DEPARTMENT_ID|DEPARTMENT_NAME|LOCATION_NAME|
++-----------+-------------+---------------+-------------+
+|        205|          110|     Accounting|        INDIA|
+|        206|          110|     Accounting|        INDIA|
+|        108|          100|        Finance|        INDIA|
+|        109|          100|        Finance|        INDIA|
+|        110|          100|        Finance|        INDIA|
+|        111|          100|        Finance|        INDIA|
+|        112|          100|        Finance|        INDIA|
+|        113|          100|        Finance|        INDIA|
+|        100|           90|      Executive|        INDIA|
+|        101|           90|      Executive|        INDIA|
+|        102|           90|      Executive|        INDIA|
+|        114|           30|     Purchasing|        INDIA|
+|        115|           30|     Purchasing|        INDIA|
+|        116|           30|     Purchasing|        INDIA|
+|        117|           30|     Purchasing|        INDIA|
+|        118|           30|     Purchasing|        INDIA|
+|        119|           30|     Purchasing|        INDIA|
+|        200|           10| Administration|        INDIA|
++-----------+-------------+---------------+-------------+
+
