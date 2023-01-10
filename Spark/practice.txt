@@ -787,3 +787,36 @@ only showing top 20 rows
 +-------------+
 |           50|
 +-------------+
+>>> empDf.select(count("salary").alias("total_count")).show()
++-----------+
+|total_count|
++-----------+
+|         50|
++-----------+
+
+>>> empDf.select(max("salary").alias("max_salary")).show()
++----------+
+|max_salary|
++----------+
+|     24000|
++----------+
+>>> empDf.select(min("salary").alias("min_salary")).show()
++----------+
+|min_salary|
++----------+
+|      2100|
++----------+
+
+>>> empDf.select(avg("salary").alias("avg_salary")).show()
++----------+
+|avg_salary|
++----------+
+|   6182.32|
++----------+
+
+>>> empDf.select(sum("salary").alias("sum_salary")).show()
++----------+
+|sum_salary|
++----------+
+|    309116|
++----------+
