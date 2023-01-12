@@ -1,2 +1,7 @@
 
 Create Database BigDataBootCamp;
+#go inside the database
+use BigDataBootCamp;
+#command to create a table
+create table if not exists 
+
