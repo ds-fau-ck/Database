@@ -138,3 +138,4 @@ only showing top 10 rows
 
 >>> resultDf.write.option("header", True).csv("/output/result")
 ###>>> resultDf.write.option("header",True).option("mode","overwrite").csv("/output/result")
+resultDf.write.mode("overwrite").option("header",True).format("csv").save("/output/result")
