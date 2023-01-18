@@ -1,0 +1,5 @@
+ hadoop fs -mkdir /input_data
+ hadoop fs -put departments.csv /input_data
+ hadoop fs -put employees.csv /input_data
+ hadoop fs -ls /output/result
+ hadoop fs -cat /output/result/part-00000-91d659fa-d3a9-4d19-b6f3-0b2491d983f1-c000.csv
