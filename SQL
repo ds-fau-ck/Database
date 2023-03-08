@@ -4,4 +4,14 @@ Create Database BigDataBootCamp;
 use BigDataBootCamp;
 #command to create a table
 create table if not exists 
+--Command to drop the database
+drop database BigDataBootCamp;
+--Command to Create table in a database
+--Go inside the particular database
+use BigDataBootCamp;
+-- Command to create a table
+create table if not exists employee(
+id int,
+name varchar(50)
+);
 
