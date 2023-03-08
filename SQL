@@ -20,6 +20,7 @@ drop table employee;
 insert into employee values(1, "kul",10000,'2021-09-15');
 insert into employee(salary, name, id) values(20000,'Shahin',3);
 insert into employee values(1, "kul",10000,'2021-09-15'),(1, "kul",10000,'2021-09-15'),(1, "kul",10000,'2021-09-15');
+-----Create table with constraints---------------
 create table if not exists emplyoee_with_constraints(
 id int not null,
 name varchar(50) not null,
