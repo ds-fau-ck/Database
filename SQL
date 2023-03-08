@@ -15,4 +15,8 @@ id int,
 name varchar(50)
 );
 show create table employee;
-
+-- Drop the table---
+drop table employee;
+insert into employee values(1, "kul",10000,'2021-09-15');
+insert into employee(salary, name, id) values(20000,'Shahin',3);
+insert into employee values(1, "kul",10000,'2021-09-15'),(1, "kul",10000,'2021-09-15'),(1, "kul",10000,'2021-09-15');
