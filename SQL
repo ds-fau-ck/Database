@@ -14,4 +14,5 @@ create table if not exists employee(
 id int,
 name varchar(50)
 );
+show create table employee;
 
