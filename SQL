@@ -29,3 +29,28 @@ hiring_date date default '2021-01-01',
 constraint unique_id unique(id),
 constraint salary_check check(salary>1000)
 );
+-----Class2---------------
+create database class2_DB;
+use class2_DB;
+create table if not exists employee(
+id int,
+name varchar(50),
+address varchar(50),
+city varchar(50)
+);
+insert into employee values(1, "shashank", 'RJPM', 'Lucknow');
+select * from employee;
+####### add new column in the table##################
+alter table employee DOB date;
+###Modify existing column in a table##########
+alter table employee modify name varchar(50);
+###Drop specific column from a table####
+alter table employee drop column city;
+####Change or rename the particular column name to full_name####
+alter table employee rename column name to full_name;
+### add unique intigrity constraint on id column###
+alter table employee add constraint id_unique unique(id);
+## drop the constraint from an existing table###
+alter table employee drop constraint id_unique;
+
+
