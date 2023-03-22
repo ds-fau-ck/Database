@@ -1,0 +1,20 @@
+CREATE database big_data;
+use big_data;
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    address varchar(50),
+    city varchar(50)
+);
+insert into employee values(1, 'Kulkirti', 'Brühl', 'Saxony');
+select * from employee;
+-- add new column name DOB in the table 
+alter table employee add DOB date;
+select * from employee;
+### modify existing column in a table 
+alter table employee modify column name varchar(100);
+## delete existing column from given table or remove city column from empleee table
+alter table employee drop column city;
+select * from employee;
+## Rename a particular column name to full_name................
+alter table employee rename column name to full_name;
