@@ -18,3 +18,10 @@ alter table employee drop column city;
 select * from employee;
 ## Rename a particular column name to full_name................
 alter table employee rename column name to full_name;
+# add integrity constraint id column...............
+alter table employee add  constraint id_unique unique(id);
+insert into employee values(1, 'chakma', 'Chemnitz','2022-08-01');
+select * from employee;
+### drop constraints from existing table.....ADD
+alter table employee drop constraint id_unique;
+select * from employee;
