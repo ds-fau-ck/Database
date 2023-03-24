@@ -169,3 +169,112 @@ delete from employee where hiring_date = '2021-08-10';
 
 
 select * from employee;
+CREATE DATABASE class2_DB;
+use class2_DB;
+
+create table if not exists employee(
+    id int,
+    name varchar(50),
+    address varchar(50),
+    city varchar(50)
+);
+show create table employee;
+insert into employee values(1,'Shashank', 'Brühl', 'Chemnitz');
+select * from employee;
+alter table employee add DOB date;
+select * from employee;
+alter table employee modify column name varchar(100);
+alter table employee drop column city;
+select * from employee;
+alter table employee rename COLUMN name to first_name;
+select * from employee;
+create table if not exists employee_1(
+    id int,
+    name varchar(50),
+    age int,
+    hiring_date date,
+    salary int,
+    city varchar(50)
+);
+insert into employee_1 values(1, 'Shashank',24,'2021-08-10', 10000,'Lucknow');
+insert into employee_1 values(2,'Rahul', 25, '2021-08-10', 20000, 'Khajuraho');
+insert into employee_1 values(3,'Sunny', 22, '2021-08-11', 11000, 'Banaglore');
+
+insert into employee_1 values(5,'Amit', 25, '2021-08-11', 12000, 'Noida');
+select * from employee_1;
+### add intigrity constraints on id column ADD
+alter table employee_1 add constraint id_unique UNIQUE(id);
+insert into employee_1 values(1,'Puneet', 26, '2021-08-12', 50000, 'Gurgaon');
+insert into employee_1 values(null,'Puneet', 26, '2021-08-12', 50000, 'Gurgaon');
+select * from employee_1;
+alter table employee_1 drop constraint id_unique;
+select * from employee_1;
+-----Create table with primary key------------------
+create table if not exists persons(
+    id int,
+    name varchar(50),
+    age int,
+    constraint pk PRIMARY key (id)
+);
+insert into persons values(1,'Shashank', 29);
+insert into persons values(null,'Chakma', 36);
+alter table persons add constraint age_unique UNIQUE(age);
+select * from persons;
+insert into persons values(5, 'Kul', 98);
+insert into persons values(6,'Chakma', null);
+select * from persons;
+insert into persons values(3,'Amit',28);
+
+insert into persons values(4,'Amit',null);
+select * from persons;
+create table if not exists customer(
+    cust_id int,
+    name varchar(50),
+    age int,
+    constraint pk PRIMARY KEY(cust_id)
+);
+create table if not exists orders(
+    order_id int,
+    order_num int,
+    customer_id int,
+    constraint pk PRIMARY KEY(order_id),
+    constraint fk FOREIGN KEY(customer_id) REFERENCES customer(cust_id)
+);
+select * from persons;
+truncate table persons;
+select * from persons;
+drop table persons;
+drop table employee;
+create table if not exists employee(
+    id int,
+    name VARCHAR(50),
+    age int,
+    hiring_date date,
+    salary int,
+    city varchar(50)
+);
+insert into employee values(1,'Shashank', 24, '2021-08-10', 10000, 'Lucknow');
+
+insert into employee values(2,'Rahul', 25, '2021-08-10', 20000, 'Khajuraho');
+
+insert into employee values(3,'Sunny', 22, '2021-08-11', 11000, 'Banaglore');
+
+insert into employee values(5,'Amit', 25, '2021-08-11', 12000, 'Noida');
+
+insert into employee values(1,'Puneet', 26, '2021-08-12', 50000, 'Gurgaon');
+
+select * from employee;
+select count(*) from employee;
+select count(*) as total_row_count from employee;
+
+select name, salary from employee;
+select name as emp_name, salary as emp_salary from employee;
+select distinct(hiring_date) as distinct_hiring_date from employee;
+select count(distinct(age)) as total_unique_ages from employee;
+select id, name, salary as old_salary, (salary+salary*0.2) as new_salary from employee;
+update employee set age=20;
+select * from employee;
+update employee set salary=salary+salary*0.2;
+select * from employee;
+update employee set salary=8000 where hiring_date='2021-08-10';
+select * from employee;
