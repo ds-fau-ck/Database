@@ -62,6 +62,7 @@ create table if not exists supplier_data(
 );
 insert into supplier_data values(300,'USA'),(303,'UK');
 #write a query to find all customer order data where customer and supplier both living in same country
+select * from customer_order_data where cust_country in (select distinct sup_country from supplier_data);
 select * from supplier_data;
 create table if not exists student_marks
 (
