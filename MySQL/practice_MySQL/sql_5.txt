@@ -15,3 +15,18 @@ insert into shop_sales_data values('2022-02-17','S1',250);
 insert into shop_sales_data values('2022-02-20','S3',300);
 
 select * from shop_sales_data;
+select * from shop_sales_data;
+# Total count of sales using window functions
+select *,
+		count(*) over(partition by shop_id) as total_sale_count_by_shops
+from shop_sales_data;
+select shop_id, count(*) as total_sale_count_by_shops from shop_sales_data group by shop_id;
+select *,
+		count(*) over(partition by shop_id order by sales_amount desc) as total_sale_count_by_shops from shop_sales_data;
+        
+select *,
+		sum(sales_amount) over(order by sales_Amount desc) as total_sale_count_by_shops
+from shop_sales_data;
+select *,
+		sum(sales_amount) over(partition by shop_id order by sales_amount desc) as total_sum_of_sales
+from shop_sales_data;
