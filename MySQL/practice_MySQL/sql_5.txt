@@ -20,13 +20,24 @@ select * from shop_sales_data;
 select *,
 		count(*) over(partition by shop_id) as total_sale_count_by_shops
 from shop_sales_data;
-select shop_id, count(*) as total_sale_count_by_shops from shop_sales_data group by shop_id;
 select *,
-		count(*) over(partition by shop_id order by sales_amount desc) as total_sale_count_by_shops from shop_sales_data;
-        
-select *,
-		sum(sales_amount) over(order by sales_Amount desc) as total_sale_count_by_shops
+		count(*) over(partition by shop_id order by sales_amount desc) as total_sale_count_by_shops
 from shop_sales_data;
+#Group by
+select shop_id, count(*) as total_sale_count_by_shops from shop_sales_data group by shop_id;
+##if we only use in order by in over clause
+select *,
+		count(*) over(order by sales_amount desc) as total_sales_count_by_shops
+from shop_sales_data;
+select *,
+		sum(sales_amount) over(order by sales_amount desc) as total_sum_of_sales
+from shop_sales_data;
+
+#if we use only partition by
+select *,
+		sum(sales_amount) over(partition by shop_id) as total_sum_sales
+from shop_sales_data;
+#if we use partition by and order by together
 select *,
 		sum(sales_amount) over(partition by shop_id order by sales_amount desc) as total_sum_of_sales
 from shop_sales_data;
