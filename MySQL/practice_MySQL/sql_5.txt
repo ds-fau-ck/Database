@@ -74,3 +74,38 @@ select *,
 		dense_rank()over(partition by shop_id order by sales_amount desc) as dense_rank_val
 from shop_sales_data;
 
+create table employees(
+emp_id int,
+salary int,
+dept_name varchar(50)
+);
+insert into employees values(1,1000,'Software'),(2, 11000,'Software'),(3,11000,'Software'),(4,11000,'Software'),(5, 15000,'Finance'),(6,15000, 'Finance'),(7, 15000,'IT'),(8,12000,'HR'),(9,12000,'HR'),(10,11000,'HR');
+select * from employees;
+delete from employees where emp_id=1;
+select 
+	tmp.*
+		from (select *,
+			row_number() over(partition by dept_name order by salary desc) as row_num
+			from employees) tmp
+	where tmp.row_num=1;
+
+# Example for lag and lead
+create table daily_sales
+(
+sales_date date,
+sales_amount int
+);
+
+
+insert into daily_sales values('2022-03-11',400);
+insert into daily_sales values('2022-03-12',500);
+insert into daily_sales values('2022-03-13',300);
+insert into daily_sales values('2022-03-14',600);
+insert into daily_sales values('2022-03-15',500);
+insert into daily_sales values('2022-03-16',200);
+
+select * from daily_sales;
+select *,
+		lag(sales_amount,1)over(order by sales_date) as pre_day_sales
+from daily_sales;
+
