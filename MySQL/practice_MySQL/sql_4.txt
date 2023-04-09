@@ -156,12 +156,7 @@ o.*,c.*
 from orders o 
 right join customer c on o.cust_id=c.cust_id;
 
-#Cross join
-create table employees_full_data(
-    emp_id int, 
-    emp_name varchar(50), 
-    mgr_id int
-);
+
 #how to join more than 2 datasets
 create table shippers(
 ship_id int,
@@ -174,11 +169,18 @@ o.*,c.*,s.*
 from orders o 
 inner join customers c on o.cust_id=c.cust_id
 inner join shippers s on o.shipper_id=s.ship_id;
-insert into employees_full_data values(1,'kul', 3);
-insert into employees_full_data values(2,'chakma', 3);
-insert into employees_full_data values(3,'ludwig', 4);
-insert into employees_full_data values(4,'Weber', 3);
-insert into employees_full_data values(5,'Alfred', null);
+#Cross join
+create table employees_full_data(
+    emp_id int, 
+    emp_name varchar(50), 
+    mgr_id int
+);
+insert into employees_full_data values(1,'shashank', 3);
+insert into employees_full_data values(2,'Amit', 3);
+insert into employees_full_data values(3,'Rajesh', 4);
+insert into employees_full_data values(4,'Ankit', 6);
+insert into employees_full_data values(6,'Nikhil', null);
+select * from employees_full_data;
 update employees_full_data set emp_id=6 where emp_name='Weber';
 update employees_full_data set emp_id=4 where emp_name='ludwig';
 update employees_full_data set mgr_id=6 where emp_id=4;
