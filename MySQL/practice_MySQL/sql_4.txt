@@ -162,6 +162,18 @@ create table employees_full_data(
     emp_name varchar(50), 
     mgr_id int
 );
+#how to join more than 2 datasets
+create table shippers(
+ship_id int,
+shipper_name varchar(50)
+);
+select * from shippers;
+insert into shippers values(3, 'abc'),(1,'xyz');
+select 
+o.*,c.*,s.*
+from orders o 
+inner join customers c on o.cust_id=c.cust_id
+inner join shippers s on o.shipper_id=s.ship_id;
 insert into employees_full_data values(1,'kul', 3);
 insert into employees_full_data values(2,'chakma', 3);
 insert into employees_full_data values(3,'ludwig', 4);
