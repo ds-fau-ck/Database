@@ -141,4 +141,18 @@ from daily_sales;
         lag(sales_amount,1,0) over(order by sales_date)as prev_day_sales,
         sales_amount-lag(sales_amount,1,0) over(order by sales_date) as sales_diff
 from daily_sales;
+select * from daily_sales;
+select *,
+		sum(sales_amount) over(order by sales_date rows between 1 preceding and 1 following )  as prev_plus_next_sales_sum
+from daily_sales;
 
+select *,
+		sum(sales_amount) over(order by sales_date rows between 1 preceding and current row) as prev_plus_sales_sum
+from daily_sales;
+select *,
+		sum(sales_amount) over(order by sales_date rows between  current row and 1 following) as prev_sales_sum
+from daily_sales;
+select *,
+		sum(sales_amount)over(order by sales_date rows between 2 preceding and 1 following) as prev_plus_nest_sales
+from daily_sales;
+		
