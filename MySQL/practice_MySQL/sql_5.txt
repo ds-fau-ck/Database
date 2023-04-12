@@ -141,6 +141,10 @@ from daily_sales;
         lag(sales_amount,1,0) over(order by sales_date)as prev_day_sales,
         sales_amount-lag(sales_amount,1,0) over(order by sales_date) as sales_diff
 from daily_sales;
+#lead function
+select *,
+		lead(sales_amount,1) over(order by sales_date) as next_day_sales
+from daily_sales;
 select * from daily_sales;
 select *,
 		sum(sales_amount) over(order by sales_date rows between 1 preceding and 1 following )  as prev_plus_next_sales_sum
