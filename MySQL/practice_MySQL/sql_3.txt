@@ -92,3 +92,10 @@ update employees set age=25 where id=10;
 update employees set salary=15000, age=22 where id=11;
 #write a query to find the total salary by each age group
 select age, sum(salary) as sum_salary from employees group by age;
+select age,
+		  sum(salary)as total_salary,
+          max(salary) as max_salary,
+          min(salary) as min_salary,
+          count(salary) as count_salray
+		from employees
+group by age;
